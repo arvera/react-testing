@@ -5,14 +5,20 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import User from './UserPage';
+import { useSelector } from "react-redux";
+import { selectUsers } from "../../Features/Users/UsersSlice";
 
 
 // https://dev.to/danielonugha0/building-a-login-system-using-redux-5ce3
 // https://medium.com/async-la/react-navigation-are-you-the-one-8cf945a4a462
 
+
+
 const UserListPage = () => {
-  const users = [{id: 1,name:"angel"},{id: 2,name:"larina"}];
+  //const users = [{id: 1,name:"angel"},{id: 2,name:"larina"}];
+  const users = useSelector(selectUsers);
   const profiles = [1,2,3,4,5];
+  
 
   const renderedListUsers = users.map((user)=> {
     return (
@@ -23,8 +29,10 @@ const UserListPage = () => {
           className={({isActive}) => {
             return isActive ? 'text-primary-700': '';
             }}>
-
-            user: {user.name}
+            user: {user.username} | 
+            password: {user.password} | 
+            roles: {user.roles}
+            
           </NavLink> 
       </ListGroup.Item>
       )
@@ -60,7 +68,7 @@ const UserListPage = () => {
         <Card.Title>Users Management page</Card.Title>
         <Card.Text>
         <ListGroup>
-        {renderListUsers2}
+        {renderedListUsers}
       </ListGroup>
         </Card.Text>
       </Card.Body>

@@ -48,7 +48,7 @@ const Login = () => {
 
 
   return (
-    <>{ success ? (<div><Alert variant="success"> Hello {user}!</Alert></div>) : (
+    <>{ success ? ( <div><Alert variant="success"> Hello {user}!</Alert></div>) : (
     <div className="login">
         
           <form className="login_form" onSubmit={handleSubmit}>
