@@ -1,9 +1,13 @@
 import {
+    LOGIN_BEGINS,
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
+    LOGIN_FAILURE,
     LOGOUT,
     SET_MESSAGE,
 } from "./types";
+
+import { backendURL } from "../services";
+
 
 import AuthService from "../Services/auth.service";
 
@@ -24,7 +28,7 @@ export const login = (username,password) => (dispatch) => {
             ) ||
             error.message || error.toString();
               dispatch({
-                  type: LOGIN_FAIL,
+                  type: LOGIN_FAILURE,
               });
               dispatch({
                   type: SET_MESSAGE,

@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card';
 
 function User() {
   const params = useParams();
-  console.log(params);
+  
   return (
     <div>
       <Card >

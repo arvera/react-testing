@@ -13,9 +13,9 @@ export const USER_MODIFIED = "USER_MODIFIED";
 export const FILTER_CHANGED_ROLE="FILTER_CHANGE_ROLE";
 
 
-
+export const LOGIN_BEGINS = "LOGIN_BEGINS";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT = "LOGOUT";
 
 

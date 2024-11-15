@@ -1,6 +1,6 @@
 import './App.css';
 import { useSelector } from "react-redux";
-import { selectUser } from "./Features/userSlice";
+import { selectUser } from "./Features/UserAuth/AuthSlice";
 import Menu from './Components/Menu';
 import About from './Components/About';
 import Register from './Components/Register';

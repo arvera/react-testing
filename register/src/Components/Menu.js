@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useSelector } from "react-redux";
-import { selectUser } from "../Features/userSlice";
+import { selectUser } from "../Features/UserAuth/AuthSlice";
 
 // https://dev.to/danielonugha0/building-a-login-system-using-redux-5ce3
 // https://medium.com/async-la/react-navigation-are-you-the-one-8cf945a4a462
@@ -16,7 +16,7 @@ function Menu() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/"> CNSWAP </Navbar.Brand>
+        <Navbar.Brand href="/"> AFP </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">

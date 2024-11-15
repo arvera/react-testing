@@ -2,23 +2,29 @@ import React, { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
-import {login} from "../Features/userSlice";
+import {login} from "../Features/UserAuth/AuthSlice";
 import { Alert ,Button } from "react-bootstrap";
 import {loginCall} from "../Services/auth.service";
+import { useSelector } from "react-redux";
+import { selectUser } from "../Features/UserAuth/AuthSlice";
 import "./login.css";
 
 
-// first tutorial: https://dev.to/danielonugha0/building-a-login-system-using-redux-5ce3
-// second tutorial: https://www.bezkoder.com/react-redux-jwt-auth/
+// first tutorial (LOGIN with local state): https://dev.to/danielonugha0/building-a-login-system-using-redux-5ce3
+// tutorial on generating QR codes: https://dev.to/danielonugha0/generating-qr-codes-using-react-51ik
+// second tutorial( with pure AXIOSand reducers the old way): https://www.bezkoder.com/react-redux-jwt-auth/
+// updating async components: https://medium.com/codex/reasoning-behind-using-redux-toolkits-createslice-and-createasyncthunk-to-handle-your-asynchronous-267e6a6514ca
 
 const Login = () => {
-    const userRef = useRef();
-    const errRef = useRef();
+    // const userRef = useRef();
+    // const errRef = useRef();
     const [user, setUser] = useState("");
     const [password,setPassword] = useState("");
     const [errMsg,setErrMsg] = useState("");
-    const [success,setSucccess] = useState(""); // change this to navigate
+    const dispatch = useDispatch();
     
+    const userStore = useSelector(selectUser);
+
     // useEffect(() => {
     //   userRef.current.focus();
     // },[])
@@ -27,28 +33,22 @@ const Login = () => {
       setErrMsg('');
     },[user,password])
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      console.log(user,password);
-      setSucccess(true);
-    }
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   console.log(user,password);
+    //   setSucccess(true);
+    // }
 
-
-    // const dispatch = useDispatch();
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log("handle submit");
-    //     dispatch(
-    //         login((name,password))
-    //         .then( () => {console.log("callback")})
-    //     )
-    // };
-    
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(
+            login({name: user, password: password})
+        )
+        
+    };
 
   return (
-    <>{ success ? ( <div><Alert variant="success"> Hello {user}!</Alert></div>) : (
+    <>
     <div className="login">
         
           <form className="login_form" onSubmit={handleSubmit}>
@@ -71,9 +71,8 @@ const Login = () => {
             </Button>
           </form>
         </div>
-        )}
     </>
  );
 };
-export default Login
+export default Login;
 

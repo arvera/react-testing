@@ -37,8 +37,16 @@ import {
             { id: 3, username: 'test3', password: 'pwd1', roles: ['ADMIN'] }
           ],
     },
-    reducers: {}
+    reducers: {
+        userAdded: (state,action) => {
+            console.log("user added action:"+ action.payload)
+            state.users.push(action.payload)
+        }
+        
+    }
  })
+
+ export const {userAdded} = usersSlice.actions;
 
  export const selectUsers = (state) => state.users.users;
 
